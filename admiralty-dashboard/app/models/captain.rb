@@ -1,0 +1,2 @@
+class Captain < ApplicationRecord
+end
