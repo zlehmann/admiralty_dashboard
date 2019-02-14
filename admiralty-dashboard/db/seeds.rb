@@ -36,3 +36,5 @@ ship_list.each do |name, type, guns, capt|
 end
 
 Action.create(ship_id: 1, action_type: "Capture")
+
+
