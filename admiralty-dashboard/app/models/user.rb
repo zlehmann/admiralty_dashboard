@@ -9,4 +9,5 @@ class User < ApplicationRecord
     validates :nationality, inclusion: { in: %w(British French Spanish), 
         message: "%{value} is not a valid nationality."}
 
+    
 end

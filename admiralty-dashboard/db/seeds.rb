@@ -36,5 +36,7 @@ ship_list.each do |name, type, guns, capt|
 end
 
 Action.create(ship_id: 1, action_type: "Capture")
+Action.create(ship_id: 2, action_type: "Combat")
+Action.create(ship_id: 3, action_type: "Combat")
 
 
