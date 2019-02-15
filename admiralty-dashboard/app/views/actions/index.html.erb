@@ -1,0 +1,5 @@
+<ul>
+    <% @actions.each do |action| %>
+        <li><%= action.action_type %> - <%= Ship.find(action.ship_id).name %></li>
+    <% end %>
+</ul>
