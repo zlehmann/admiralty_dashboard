@@ -1,0 +1,5 @@
+<ul>
+    <% @captains.each do |c| %>
+        <li><%= link_to c.name, captain_path(c.id) %></li>
+    <% end %>
+</ul>
