@@ -1,0 +1,25 @@
+<h2><%= @captain.name %></h2>
+
+<p>Under command of: </p><%= @captain.user.name %>
+<h3>Has commanded: </h3>
+<table>
+    <tr>
+        <th>Ship Name:</th>
+        <th>Class:</th>
+        <th>Guns:</th>
+    </tr>
+    <% @captain.ships.each do |ship| %>
+        <tr>
+            <td><%= link_to ship.name, ship_path(ship.id) %></td>
+            <td><%= ship.class_type %></td>
+            <td><%= ship.guns %></td>
+        </tr>
+    <% end %>
+</table>
+<br><br>
+<h3>Recorded Actions:</h3>
+<ul>
+    <% @captain.actions.each do |action| %>
+        <li><%= link_to action.action_type, action_path(action.id) %></li>
+    <% end %>
+</ul>
