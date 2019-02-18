@@ -20,6 +20,6 @@
 <h3>Recorded Actions:</h3>
 <ul>
     <% @captain.actions.each do |action| %>
-        <li><%= link_to action.action_type, action_path(action.id) %></li>
+        <li><%= link_to action.action_type, captain_action_path(action.id) %></li>
     <% end %>
 </ul>
