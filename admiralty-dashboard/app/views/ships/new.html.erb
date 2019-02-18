@@ -1,0 +1,12 @@
+
+<%= render 'form' %>
+<% if @ship.errors.any? %>
+    <div id="error_messages">
+        <%= pluralize(@ship.errors.count, "error") %>
+        prohibited this Ship from being saved:
+        <br>
+        <% @ship.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </div>
+<% end %>

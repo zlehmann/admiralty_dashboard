@@ -1,0 +1,7 @@
+<%= form_for @ship do |f| %>
+    Ship's Name: <%= f.text_field :name %><br>
+    Number of Ship's Guns: <%= f.text_field :guns %><br>
+    Ship Class: <%= f.select :class_type, ['Frigate', 'Brig', 'Sloop', 'Line'] %><br>
+    Assign to a Captain: <%= select("ship", "captain_id", Captain.all.collect {|c| [c.name, c.id]}, {include_blank: true}) %><br>
+    <%= f.submit "Create Ship" %>
+<% end %>
