@@ -2,4 +2,5 @@
     <% @ships.each do |ship| %>
         <li><%= link_to ship.name, ship_path(ship.id) %></li>
     <% end %>
-</ul>
+</ul><br>
+<%= link_to "Create New Ship", new_ship_path %>
