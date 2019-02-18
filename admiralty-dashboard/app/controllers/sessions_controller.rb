@@ -4,8 +4,14 @@ class SessionsController < ApplicationController
     end
 
     def create
-        session[:name] = params[:name]
-        redirect_to '/'
+        @user = User.find_by(name: params[:session][:name])
+        if @user && @user.authenticate(params[:session][:password])
+            session[:user_id] = @user.id
+            redirect_to user_path(@user.id)
+        else
+            @error = "Incorrect user/password combination."
+            render :new
+        end
     end
 
     def destroy
