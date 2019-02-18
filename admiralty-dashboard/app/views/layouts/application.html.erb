@@ -10,16 +10,13 @@
   </head>
 
   <body>
-    <% if flash[:error] %>
-      <%= flash[:error] %>
-    <% end %>
     <% if current_user %>
       <div id="navbar">
         <ul>
-          <li>Home</li>
-          <li>Captains</li>
-          <li>Ships</li>
-          <li>Actions</li>
+          <li><%= link_to "Home", user_path %></li>
+          <li><%= link_to "Captains", captains_path %></li>
+          <li><%= link_to "Ships", ships_path %></li>
+          <li><%= link_to "Actions", actions_path %></li>
           <li><%= link_to "Log Out", logout_path, method: "delete" %></li>
         </ul>
       </div><!-- End of navbar -->
