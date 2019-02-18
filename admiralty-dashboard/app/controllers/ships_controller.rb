@@ -1,4 +1,6 @@
 class ShipsController < ApplicationController
+    before_action :require_login
+
     def index
         @ships = Ship.all
     end

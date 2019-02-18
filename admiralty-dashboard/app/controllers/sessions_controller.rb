@@ -15,6 +15,11 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        session.delete :name 
+        session.delete :user_id 
+        redirect_to login_path
+    end
+
+    def forbidden
+        render :forbidden 
     end
 end
