@@ -1,0 +1,13 @@
+<h2>Create a new Admiral</h2>
+<%= render 'form' %>
+<br>
+<% if @user.errors.any? %>
+    <div id="error_messages">
+        <%= pluralize(@user.errors.count, "error") %>
+        prohibited this Captain from being saved:
+        <br>
+        <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </div>
+<% end %>
