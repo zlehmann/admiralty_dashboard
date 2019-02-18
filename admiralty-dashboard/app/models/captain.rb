@@ -4,4 +4,8 @@ class Captain < ApplicationRecord
     has_many :actions, through: :ships
 
     validates :name, presence: true
+    
+    def current_ship
+        Ship.find(self.ship_id)
+    end
 end

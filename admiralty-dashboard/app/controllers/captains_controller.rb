@@ -1,4 +1,6 @@
 class CaptainsController < ApplicationController
+    before_action :require_login
+
     def index
         @captains = Captain.all 
     end
@@ -23,6 +25,6 @@ class CaptainsController < ApplicationController
     private
 
     def captain_params
-        params.require(:captain).permit(:name, :age, :ship_id)
+        params.require(:captain).permit(:name, :age, :ship_id, :user_id)
     end
 end

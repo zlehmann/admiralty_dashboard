@@ -15,7 +15,9 @@ class UsersController < ApplicationController
     end
 
     def show
-        @captains =  
+        @user = current_user
+        @captains = @user.captains
+        @ships = @user.ships
     end
 
     private
@@ -25,6 +27,6 @@ class UsersController < ApplicationController
     end
 
     def require_login 
-        return head(:forbidden) unless session.include? :name
+        return head(:forbidden) unless session.include? :user_id
     end
 end

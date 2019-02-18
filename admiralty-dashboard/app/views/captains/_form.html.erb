@@ -1,4 +1,5 @@
 <%= form_for @captain do |f| %>
+    <%= f.hidden_field :user_id, :value=> session[:user_id] %>
     Captain's Name: <%= f.text_field :name %><br>
     Captain's Age: <%= f.text_field :age %><br>
     Assign a free ship to Captain: <%= select("captain", "ship_id", Ship.not_owned.collect {|s| [s.name, s.id]}, {include_blank: true}) %><br>
