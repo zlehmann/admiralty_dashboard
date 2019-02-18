@@ -8,11 +8,16 @@ class CaptainsController < ApplicationController
     end
 
     def new
+        @captain = Captain.new
     end
 
     def create
-        @captain = Captain.create(captain_params)
-        redirect_to captain_path(@captain)
+        @captain = Captain.new(captain_params)
+        if @captain.save 
+            redirect_to captain_path(@captain)
+        else 
+            render :new
+        end
     end
 
     private
