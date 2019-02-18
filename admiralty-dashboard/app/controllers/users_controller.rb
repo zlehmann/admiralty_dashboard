@@ -3,7 +3,8 @@ class UsersController < ApplicationController
 
     def show
         if params[:captain_id]
-            @captains 
+            @captains
+        end 
     end
 
 end

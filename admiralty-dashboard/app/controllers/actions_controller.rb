@@ -1,5 +1,4 @@
 class ActionsController < ApplicationController
-
     def index
         if params[:captain_id]
             @actions = Captain.find(params[:captain_id]).actions
@@ -15,5 +14,10 @@ class ActionsController < ApplicationController
             @captain = Captain.find(params[:captain_id])
         end
     end
+
+    def new
+    end
+
+    
 
 end

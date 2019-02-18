@@ -6,4 +6,5 @@ class Ship < ApplicationRecord
     validates :class_type, inclusion: { in: %w(Frigate Brig Sloop Line), 
         message: "%{value} is not a valid ship class." }
 
+    scope :not_owned, -> { where(captain_id: nil)}
 end

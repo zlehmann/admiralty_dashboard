@@ -1,0 +1,6 @@
+<%= form_for(Captain.new) do |f| %>
+    Captain's Name: <%= f.text_field :name %><br>
+    Captain's Age: <%= f.text_field :age %><br>
+    Assign a free ship to Captain: <%= select("captain", "ship_id", Ship.not_owned.collect {|s| [s.name, s.id]}, {include_blank: true}) %>
+    <%= f.submit "Create Captain" %>
+<% end %>
