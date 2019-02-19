@@ -18,8 +18,22 @@ class ActionsController < ApplicationController
     end
 
     def new
+        @new_action = Action.new
     end
 
-    
+    def create
+        @new_action = Action.new(action_type: params[:action_type], ship_id: params[:action_ship][:ship_id])
+        if @new_action.save 
+            redirect_to action_path(@new_action)
+        else 
+            render :new
+        end
+    end
+
+    private
+    #wasn't able to get strong params to work on new action form.
+    def action_params
+        params.require(:new_action).permit(:action_type, :ship_id)
+    end
 
 end

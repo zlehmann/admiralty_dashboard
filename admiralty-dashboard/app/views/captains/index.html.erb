@@ -1,3 +1,4 @@
+<h2>Current Captain Roster</h2>
 <ul>
     <% @captains.each do |c| %>
         <li><%= link_to c.name, captain_path(c.id) %></li>
