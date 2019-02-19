@@ -1,15 +1,8 @@
-<<<<<<< HEAD
 <!-- this doesn't submit params at all
 <%= form_for @new_action, url: {action: "create"} do |f| %>
     Action Type: <%= f.text_field :action_type %><br>
     Ship Involved: <%= select(":new_action", "ship_id", Ship.all.collect {|s| [s.name, s.id]}) %><br>
     <%= f.submit "Create Action" %>-->
-=======
-<%= form_for @action, url: {action: "create"} do |f| %>
-    Action Type: <%= f.text_field :action_type %><br>
-    Ship Involved: <%= select("action", "ship_id", Ship.all.collect {|s| [s.name, s.id]}) %><br>
-    <%= f.submit "Create Action" %>
->>>>>>> 002016c72eef6fa8b17f7426aaf72fa361f4d7ad
 <% end %>
 
 <!-- this submits params but no token 
@@ -19,18 +12,9 @@
     <input type="submit"/>
 </form>-->
 
-<<<<<<< HEAD
  
 <%= form_tag("/actions", method: "post") do %>
     Action Type: <%= text_field_tag(:action_type) %><br>
     Ship Involved: <%= select("action_ship", "ship_id", Ship.all.collect {|s| [s.name, s.id]}) %><br>
     <%= submit_tag("Create Action") %>
 <% end %>
-=======
-<!--This works
-<%= form_tag("/actions", method: "post") do %>
-    <%= text_field_tag(:action_type) %>
-    <%= text_field_tag(:ship_id) %>
-    <%= submit_tag("Create Action") %>
-<% end %>-->
->>>>>>> 002016c72eef6fa8b17f7426aaf72fa361f4d7ad
