@@ -1,3 +1,5 @@
+<h2>Actions Performed</h2>
+
 <ul>
     <% @actions.each do |action| %>
         <li><%= link_to action.action_type, action_path(action.id) %> - <%= link_to action_ship(action).name, ship_path(action_ship(action).id) %></li>

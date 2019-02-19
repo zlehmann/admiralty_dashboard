@@ -1,0 +1,19 @@
+<%= form_for @action, url: {action: "create"} do |f| %>
+    Action Type: <%= f.text_field :action_type %><br>
+    Ship Involved: <%= select("action", "ship_id", Ship.all.collect {|s| [s.name, s.id]}) %><br>
+    <%= f.submit "Create Action" %>
+<% end %>
+
+<!-- this submits params but no token 
+<form method="post" action="/actions">
+    <input type="text" name="action_type"/>
+    <input type="text" name="ship_id" />
+    <input type="submit"/>
+</form>-->
+
+<!--This works
+<%= form_tag("/actions", method: "post") do %>
+    <%= text_field_tag(:action_type) %>
+    <%= text_field_tag(:ship_id) %>
+    <%= submit_tag("Create Action") %>
+<% end %>-->

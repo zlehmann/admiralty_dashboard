@@ -6,3 +6,11 @@
 <% end %>
 </ul><br>
 <%= link_to "Create New Captain", new_captain_path %>
+
+<h2>Current Fleet:</h2>
+<ul>
+<% @ships.each do |s| %>
+    <li><%= link_to s.name, ship_path(s.id) %></li>
+<% end %>
+</ul>
+<%= link_to "Create New Ship", new_ship_path %>

@@ -1,0 +1,11 @@
+<%= render 'form' %>
+<% if @action.errors.any? %>
+    <div id="error_messages">
+        <%= pluralize(@action.errors.count, "error") %>
+        prohibited this Action from being saved:
+        <br>
+        <% @action.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </div>
+<% end %>

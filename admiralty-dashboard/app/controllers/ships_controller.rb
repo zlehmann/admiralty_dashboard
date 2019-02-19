@@ -16,7 +16,6 @@ class ShipsController < ApplicationController
     def create 
         @ship = Ship.new(ship_params)
         @ship.captains << Captain.find(params[:ship][:captain_id])
-        binding.pry
         if @ship.save
             redirect_to ship_path(@ship.id)
         else
