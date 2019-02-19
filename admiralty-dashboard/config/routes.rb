@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/403', to: 'application#forbidden'
+  get '/auth/facebook/callback' => 'sessions#create'
 end
