@@ -18,7 +18,8 @@ end
 captain_list = [
     ["Jack Audbrey", 32, 1, 1],
     ["Thomas Goodmin", 35, 1, 2],
-    ["Jacques Boudin", 31, 2, 3]
+    ["Jacques Boudin", 31, 2, 3],
+    ["Joe 'ain't got no ship' Smith", 25, 1, nil]
 ]
 
 captain_list.each do |name, age, user, ship|

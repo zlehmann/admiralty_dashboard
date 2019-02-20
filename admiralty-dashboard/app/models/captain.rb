@@ -6,6 +6,8 @@ class Captain < ApplicationRecord
     validates :name, presence: true
     
     def current_ship
-        Ship.find(self.ship_id)
+        ship = Ship.find(self.ship_id)
+    rescue ActiveRecord::RecordNotFound
+        ship = nil
     end
 end
