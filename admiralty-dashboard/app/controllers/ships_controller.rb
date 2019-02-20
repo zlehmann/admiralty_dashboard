@@ -15,8 +15,8 @@ class ShipsController < ApplicationController
 
     def create 
         @ship = Ship.new(ship_params)
-        @ship.captains << Captain.find(params[:ship][:captain_id])
         if @ship.save
+            @ship.captains << Captain.find(params[:ship][:captain_id])
             redirect_to ship_path(@ship.id)
         else
             render :new 
