@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
             end
             @user.save
             session[:user_id] = @user.id
-            binding.pry
             redirect_to user_path(@user.id)
         else
             @user = User.find_by(name: params[:session][:name])

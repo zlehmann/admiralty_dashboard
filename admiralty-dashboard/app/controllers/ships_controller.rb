@@ -10,7 +10,7 @@ class ShipsController < ApplicationController
     end
 
     def new
-        @ship = Ship.new 
+        @ship = Ship.new(captain_id: params[:captain_id])
     end
 
     def create 
