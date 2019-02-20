@@ -4,18 +4,25 @@ class SessionsController < ApplicationController
     end
 
     def create
-        @user = User.find_or_create_by(uid: auth['uid']) do |u|
-            u.name = auth['info']['name']
-            u.email = auth['info']['email']
-            u.image = auth['info']['image']
-        end
-        
-        if @user && @user.authenticate(params[:session][:password])
+        if auth_hash
+            @user = User.find_or_create_by(uid: auth_hash['uid']) do |u|
+                u.name = auth_hash['info']['name']
+                u.provider = auth_hash['provider']
+            end
+            @user.save
+            binding.pry
             session[:user_id] = @user.id
             redirect_to user_path(@user.id)
         else
-            @error = "Incorrect user/password combination."
-            render :new
+            binding.pry
+            @user = User.find_by(name: params[:session][:name])
+            if @user && @user.authenticate(params[:session][:password])
+                session[:user_id] = @user.id
+                redirect_to user_path(@user.id)
+            else
+                @error = "Incorrect user/password combination."
+                render :new
+            end
         end
     end
 
@@ -30,7 +37,7 @@ class SessionsController < ApplicationController
 
     private
 
-    def auth
+    def auth_hash
         request.env['omniauth.auth']
     end
 end

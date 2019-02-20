@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
             render "sessions/forbidden"
         end
     end
+    helper_method :current_user
 
     private
     
@@ -13,6 +14,4 @@ class ApplicationController < ActionController::Base
         return unless session[:user_id]
         @current_user ||= User.find(session[:user_id])
     end
-
-    helper_method :current_user
 end

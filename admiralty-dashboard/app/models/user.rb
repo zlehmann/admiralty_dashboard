@@ -5,9 +5,13 @@ class User < ApplicationRecord
 
     validates :name, :password, presence: true
     validates :name, uniqueness: true
-    validates :age, numericality: { only_integer: true }
-    validates :nationality, inclusion: { in: %w(British French Spanish), 
-        message: "%{value} is not a valid nationality."}
 
+    def self.create_with_omniauth(auth)
+        create! do |user|
+            user.provider = auth["provider"]
+            user.uid = auth["uid"]
+            user.name = auth["info"]["name"]
+        end
+    end
     
 end
