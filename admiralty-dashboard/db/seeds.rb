@@ -7,12 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user_list = [
-    ["Zak", "blight1", 35, "British"],
-    ["Bellamy", "canuck04", 33, "French"]
+    ["Zak", "blight1", 17882956],
+    ["Bellamy", "canuck04", nil],
 ]
 
-user_list.each do |name, password, age, nationality|
-    User.create( name: name, password: password, age: age, nationality: nationality)
+user_list.each do |name, password, uid|
+    User.create( name: name, password: password, uid: uid)
 end
 
 captain_list = [

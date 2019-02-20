@@ -8,13 +8,13 @@ class SessionsController < ApplicationController
             @user = User.find_or_create_by(uid: auth_hash['uid']) do |u|
                 u.name = auth_hash['info']['name']
                 u.provider = auth_hash['provider']
+                u.id = auth_hash['uid']
             end
             @user.save
-            binding.pry
             session[:user_id] = @user.id
+            binding.pry
             redirect_to user_path(@user.id)
         else
-            binding.pry
             @user = User.find_by(name: params[:session][:name])
             if @user && @user.authenticate(params[:session][:password])
                 session[:user_id] = @user.id
