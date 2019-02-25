@@ -10,7 +10,7 @@
 <h2>Current Fleet:</h2>
 <ul>
 <% @ships.each do |s| %>
-    <li><%= link_to s.name, ship_path(s.id) %></li>
+    <li><%= link_to s.name, ship_path(s) %></li>
 <% end %>
 </ul>
 <%= link_to "Create New Ship", new_ship_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_20_003929) do
+ActiveRecord::Schema.define(version: 2019_02_25_213229) do
 
   create_table "actions", force: :cascade do |t|
     t.integer "ship_id"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_02_20_003929) do
     t.datetime "updated_at", null: false
     t.string "uid"
     t.string "provider"
+    t.string "email"
   end
 
 end

@@ -1,4 +1,7 @@
 <% if @captain %>
     Action involving Captain: <%= link_to @captain.name, captain_path(@captain.id) %><br>
 <% end %>
-<%= @action.action_type %> - involving the <%= link_to @ship.name, ship_path(@ship.id) %>
+<%= @action.action_type %> - involving the <br>
+<% @action.ships.each do |ship| %>
+    <%= link_to ship.name, ship_path(ship) %><br>
+<% end %>

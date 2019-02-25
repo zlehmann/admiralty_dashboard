@@ -2,7 +2,10 @@
 
 <ul>
     <% @actions.each do |action| %>
-        <li><%= link_to action.action_type, action_path(action.id) %> - <%= link_to action_ship(action).name, ship_path(action_ship(action).id) %></li>
+        <li><%= link_to action.action_type, action_path(action.id) %> - Involving the ships:</li>
+        <% action.ships.each do |ship| %>
+            <%= link_to ship.name, ship_path(ship) %><br>
+        <% end %>
     <% end %>
 </ul><br>
 <%= link_to "Create New Action", new_action_path %>

@@ -1,6 +1,6 @@
 <h2>Log In:</h2>
 <%= form_for(:session, url: login_path) do |f| %>
-    Name: <%= f.text_field :name %><br>
+    Email: <%= f.text_field :email %><br>
     Password: <%= f.password_field :password %><br>
     <%= f.submit "Login" %>
 <% end %>
@@ -8,5 +8,7 @@
 <% if @error %>
     <%= @error %>
 <% end %>
+<br>
+<%= link_to "Signup", new_user_path %>
 <br>
 <%= link_to('Log in with GitHub!', '/auth/github') %>

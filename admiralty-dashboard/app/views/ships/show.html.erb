@@ -1,6 +1,6 @@
 <h2><%= @ship.name %></h2>
 <br>
-Current Captain: <%= link_to @ship.captains.last.name, captain_path(@ship.captains.last.id) %>
+Current Captain: <%= link_to @ship.captain.name, captain_path(@ship.captain) %>
 <br>
 Ship Class: <%= @ship.class_type %><br>
 Guns: <%= @ship.guns %>

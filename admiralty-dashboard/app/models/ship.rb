@@ -1,6 +1,6 @@
 class Ship < ApplicationRecord
-    has_many :captains
-    has_many :actions
+    belongs_to :captain
+    belongs_to :action
 
     validates :name, :class_type, :guns, presence: true
     validates :class_type, inclusion: { in: %w(Frigate Brig Sloop Line), 

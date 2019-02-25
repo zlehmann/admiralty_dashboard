@@ -3,8 +3,8 @@ class User < ApplicationRecord
     has_many :captains
     has_many :ships, through: :captains
 
-    validates :name, :password, presence: true
-    validates :name, uniqueness: true
+    validates :email, :password, presence: true
+    validates :email, uniqueness: true
 
     def self.create_with_omniauth(auth)
         create! do |user|

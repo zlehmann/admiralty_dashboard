@@ -1,7 +1,6 @@
 <%= form_for :user, url: '/users' do |f| %>
     Name: <%= f.text_field :name %><br>
-    Age: <%= f.text_field :age %><br>
-    Nationality: <%= f.select :nationality, ['French', 'British', 'Spanish'] %><br>
+    Email: <%= f.text_field :email %><br>
     Password: <%= f.password_field :password %><br>
     Password Confirmation: <%= f.password_field :password_confirmation %><br>
     <%= f.submit "Create Admiral" %>

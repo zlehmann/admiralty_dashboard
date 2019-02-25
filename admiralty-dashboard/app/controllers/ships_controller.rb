@@ -15,8 +15,9 @@ class ShipsController < ApplicationController
 
     def create 
         @ship = Ship.new(ship_params)
+        @ship.action = Action.create(action_type: "Newly commissioned")
         if @ship.save
-            @ship.captains << Captain.find(params[:ship][:captain_id])
+            @ship.captain = Captain.find(params[:ship][:captain_id])
             redirect_to ship_path(@ship.id)
         else
             render :new 
@@ -26,7 +27,7 @@ class ShipsController < ApplicationController
     private
 
     def ship_params
-        params.require(:ship).permit(:name, :guns, :class_type, :captain_id)
+        params.require(:ship).permit(:name, :guns, :class_type, :captain_id, :action_id)
     end
 
 end

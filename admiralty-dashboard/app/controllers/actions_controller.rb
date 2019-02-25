@@ -3,7 +3,7 @@ class ActionsController < ApplicationController
     
     def index
         if params[:captain_id]
-            @actions = Captain.find(params[:captain_id]).actions
+            @actions = Captain.find(params[:captain_id]).ship.action
         else 
             @actions = Action.all
         end
@@ -11,7 +11,7 @@ class ActionsController < ApplicationController
 
     def show
         @action = Action.find(params[:id])
-        @ship = Ship.find(@action.ship_id)
+        @ships = @action.ships
         if params[:captain_id]
             @captain = Captain.find(params[:captain_id])
         end
@@ -22,7 +22,9 @@ class ActionsController < ApplicationController
     end
 
     def create
-        @new_action = Action.new(action_type: params[:action_type], ship_id: params[:action_ship][:ship_id])
+        @new_action = Action.new(action_type: params[:action_type])
+        ship = Ship.find(params[:action_ship][:ship_id])
+        @new_action.ships << ship
         if @new_action.save 
             redirect_to action_path(@new_action)
         else 
