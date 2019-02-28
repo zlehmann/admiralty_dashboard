@@ -14,8 +14,10 @@ class ShipsController < ApplicationController
     end
 
     def create 
-        @ship = Ship.new(ship_params)
-        @ship.action = Action.create(action_type: "Newly commissioned")
+        #@ship = Ship.new(ship_params)
+        #@ship.action = Action.find_or_create_by(action_type: "Newly commissioned")
+        @action = Action.find_or_create_by(action_type: "Newly commissioned")
+        @ship = @action.ships.build(ship_params)
         if @ship.save
             @ship.captain = Captain.find(params[:ship][:captain_id])
             redirect_to ship_path(@ship.id)

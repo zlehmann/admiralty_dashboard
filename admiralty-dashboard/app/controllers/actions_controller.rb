@@ -3,9 +3,16 @@ class ActionsController < ApplicationController
     
     def index
         if params[:captain_id]
-            @actions = Captain.find(params[:captain_id]).ship.action
+
+            @actions = Captain.find(params[:captain_id]).actions
         else 
             @actions = Action.all
+        end
+
+        if params[:action_filter] == "Battles"
+            @actions = @actions.battles
+        elsif params[:action_filter] == "Captures"
+            @actions = @actions.captures 
         end
     end
 
@@ -22,7 +29,7 @@ class ActionsController < ApplicationController
     end
 
     def create
-        @new_action = Action.new(action_type: params[:action_type])
+        @new_action = Action.find_or_create_by(action_type: params[:action_type])
         ship = Ship.find(params[:action_ship][:ship_id])
         @new_action.ships << ship
         if @new_action.save 
