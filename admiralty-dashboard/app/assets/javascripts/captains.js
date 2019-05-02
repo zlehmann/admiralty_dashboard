@@ -3,18 +3,22 @@ $(document).ready(
 );
 
 function attachListeners() {
-  $("button#btn_captains").click(function (e) {
+  $("button#btn_captains").on('click', (e) => {
     e.preventDefault;
     captainIndex();
   });
-};
 
-function captainIndex() {
+  function captainIndex() {
     $('#captain_index').empty();
-    $.get(`/captains`, (captList) => {
-        $('#captain_index').append(`<li><a href="/captains/#{captList.id}>#{captList.name}</a></li><br>`);
+    $.get(`/captains.json`, (data) => {
+        data.forEach(makeCaptLink);
     });
   }
 
+  function makeCaptLink(captain) {
+    $('#captain_index').append(`<li><a href="/captains/#{captain.id}>#{captain.name}</a></li><br>`);
+  }
+
+};
 
 
