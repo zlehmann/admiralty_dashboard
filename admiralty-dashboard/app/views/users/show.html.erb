@@ -8,6 +8,7 @@
     <li><%= link_to c.name, captain_path(c.id) %> - currently commanding the <% if c.current_ship == nil %>chair in an office.<% else %><%= link_to c.current_ship.name, ship_path(c.current_ship.id) %><% end %></li>
 <% end %>-->
 </ul><br>
+<button id="btn_captains">Show Captains</button><br>
 <%= link_to "Create New Captain", new_captain_path %>
 
 <h2>Current Fleet:</h2>
