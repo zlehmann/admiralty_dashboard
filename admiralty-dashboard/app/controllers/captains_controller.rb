@@ -3,6 +3,7 @@ class CaptainsController < ApplicationController
 
     def index
         @captains = Captain.all 
+        render json: @captains.to_json
     end
 
     def show
