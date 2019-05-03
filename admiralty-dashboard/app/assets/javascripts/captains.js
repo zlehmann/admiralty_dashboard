@@ -1,12 +1,8 @@
-$(document).ready(
-  attachListeners()
-);
-
-function attachListeners() {
+$(document).ready(function() {
   $("button#btn_captains").on('click', (e) => {
     e.preventDefault;
-    console.log("hello");
-  });
+    captainIndex();
+  })
 
   function captainIndex() {
     $('#captain_index').empty();
@@ -16,9 +12,6 @@ function attachListeners() {
   }
 
   function makeCaptLink(captain) {
-    $('#captain_index').append(`<li><a href="/captains/#{captain.id}>#{captain.name}</a></li><br>`);
+    $('#captain_index').append(`<li><a href="/captains/${captain.id}">${captain.name}</a></li><br>`);
   }
-
-};
-
-
+})

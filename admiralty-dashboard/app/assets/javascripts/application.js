@@ -15,5 +15,5 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
-//= require captains
 //= require jquery_ujs
+//= require captains
