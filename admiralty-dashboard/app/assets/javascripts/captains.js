@@ -5,7 +5,7 @@ $(document).ready(
 function attachListeners() {
   $("button#btn_captains").on('click', (e) => {
     e.preventDefault;
-    captainIndex();
+    console.log("hello");
   });
 
   function captainIndex() {
