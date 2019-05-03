@@ -1,3 +1,3 @@
 class CaptainSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :age
 end

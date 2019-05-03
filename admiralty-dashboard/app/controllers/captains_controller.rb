@@ -11,6 +11,10 @@ class CaptainsController < ApplicationController
 
     def show
         @captain = Captain.find(params[:id])
+        respond_to do |f|
+            f.html
+            f.json {render json: @captain}
+        end
     end
 
     def new

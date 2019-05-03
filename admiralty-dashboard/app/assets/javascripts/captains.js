@@ -12,6 +12,7 @@ $(document).ready(function() {
   }
 
   function makeCaptLink(captain) {
-    $('#captain_index').append(`<li><a href="/captains/${captain.id}">${captain.name}</a></li><br>`);
+    $('#captain_index').append(`<li><a href="/captains/${captain.id}">${captain.name}</a><button id="captid-${captain.id}">More Info</button></li><br>`);
+    $(`#captid-${captain.id}`).on('click', () => showCaptain(captain.id));
   }
 })
