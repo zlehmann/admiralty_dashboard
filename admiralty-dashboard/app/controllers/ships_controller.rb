@@ -3,10 +3,18 @@ class ShipsController < ApplicationController
 
     def index
         @ships = Ship.all
+        respond_to do |f|
+            f.html
+            f.json {render json: @ships}
+        end
     end
     
     def show
         @ship = Ship.find(params[:id])
+        respond_to do |f|
+            f.html
+            f.json {render json: @ship}
+        end
     end
 
     def new
