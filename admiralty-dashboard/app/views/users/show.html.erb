@@ -12,7 +12,7 @@
 <%= link_to "Create New Captain", new_captain_path %>
 
 <h2>Current Fleet:</h2>
-<ul>
+<ul id="current_fleet">
 <% @ships.each do |s| %>
     <li><%= link_to s.name, ship_path(s) %></li>
 <% end %>

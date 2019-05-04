@@ -14,6 +14,11 @@ class ActionsController < ApplicationController
         elsif params[:action_filter] == "Captures"
             @actions = @actions.captures 
         end
+
+        respond_to do |f|
+            f.html
+            f.json {render json: @actions}
+        end
     end
 
     def show
@@ -21,6 +26,10 @@ class ActionsController < ApplicationController
         @ships = @action.ships
         if params[:captain_id]
             @captain = Captain.find(params[:captain_id])
+        end
+        respond_to do |f|
+            f.html
+            f.json {render json: @action}
         end
     end
 

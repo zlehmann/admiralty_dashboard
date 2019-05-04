@@ -11,6 +11,16 @@ $(document).ready(function() {
     });
   }
 
+  function Captain(id, name, ships){
+    this.id = id;
+    this.name = name;
+    this.ships = ships;
+  }
+
+  Captain.prototype.ships = function() {
+    
+  }
+
   function makeCaptLink(captain) {
     $('#captain_index').append(`<li id="captid-${captain.id}"><a href="/captains/${captain.id}">${captain.name}</a><button id="infobutton-${captain.id}">More Info</button></li>`);
     $(`#infobutton-${captain.id}`).on('click', () => showCaptain(captain));
@@ -23,21 +33,18 @@ $(document).ready(function() {
     $(`#show_captid-${captain.id}`).append(`<li>Age: ${captain.age}</li>`);
     $(`#show_captid-${captain.id}`).append(`<li>Under command of: ${captain.user.name}</li>`);
     $(`#show_captid-${captain.id}`).append(`<button id="capt-${captain.id}-ships">Captain's Ships</button>`);
-    $(`#capt-${captain.id}-ships`).on('click', (e) => {
-      e.preventDefault;
-      showShip(captain);
-    });
+    $(`#capt-${captain.id}-ships`).on('click', () => showShip(captain));
   }
 
   function showShip(captain) {
     $(`#show_captid-${captain.id}`).append(`<ul id="capt-${captain.id}-ship-list"></ul>`);
-    $.get(`/captains/${captain.id}/ships.json`, (data) => {
+    $(`#capt-${captain.id}-ship-list`).empty();
+    $.get(`/ships.json`, (data) => {
       data.forEach(makeShipLink);
     });
   }
 
   function makeShipLink(ship) {
-    $(`#capt-${ship.captain.id}-ship-list`).empty();
     $(`#capt-${ship.captain.id}-ship-list`).append(`<li id="ship-${ship.id}"><a href="/ships/${ship.id}">${ship.name}</a></li>`);
   }
 })

@@ -18,3 +18,4 @@
 //= require jquery_ujs
 //= require captains
 //= require ships
+//= require actions
