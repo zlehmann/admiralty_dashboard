@@ -22,5 +22,18 @@ $(document).ready(function() {
     $(`#captid-${captain.id}`).append(`<ul id="show_captid-${captain.id}"></ul>`);
     $(`#show_captid-${captain.id}`).append(`<li>Age: ${captain.age}</li>`);
     $(`#show_captid-${captain.id}`).append(`<li>Under command of: ${captain.user.name}</li>`);
+    $(`#show_captid-${captain.id}`).append(`<button id="capt-${captain.id}-ships">Captain's Ships</button>`);
+    $(`#capt-${captain.id}-ships`).on('click', () => showShip(captain));
+  }
+
+  function showShip(captain) {
+    $(`#show_captid-${captain.id}`).append(`<ul id="capt-${captain.id}-ship-list"></ul>`);
+    $.get(`/captains/${captain.id}/ships.json`, (data) => {
+      data.forEach(makeShipLink);
+    });
+  }
+
+  function makeShipLink(ship) {
+    $(`#capt-${ship.captain.id}-ship-list`).append(`<li id="ship-${ship.id}"><a href="/ships/${ship.id}">${ship.name}</a></li>`);
   }
 })

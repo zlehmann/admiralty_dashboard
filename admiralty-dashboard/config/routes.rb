@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :ships
   resources :captains do 
     resources :actions, only: [:index, :show]
-    resources :ships, only: [:new]
+    resources :ships, only: [:index, :show, :new]
   end
 
   resources :users
