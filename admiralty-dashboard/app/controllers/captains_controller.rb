@@ -24,7 +24,8 @@ class CaptainsController < ApplicationController
     def create
         @captain = Captain.new(captain_params)
         if @captain.save 
-            redirect_to captain_path(@captain)
+            #redirect_to captain_path(@captain)
+            render json: @captain
         else 
             render :new
         end

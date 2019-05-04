@@ -10,3 +10,28 @@
         <% end %>
     </div>
 <% end %>
+
+<div id="postResult">
+    <p id="captName"></p>
+    <p id="captAge"></p>
+    <p id="captShip"></p>
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+    $(function() {
+        $('form').submit(function(e) {
+            e.preventDefault();
+            let values = $(this).serialize();
+            let posting = $.post('/captains', values);
+
+            posting.done(function(data){
+                console.log(data);
+                var capt = data;
+                $('#captName').text(capt["name"]);
+                $('#captAge').text(capt["age"]);
+                $('#captShip').text(capt["ship"]);
+            });
+        });
+    });
+</script>
