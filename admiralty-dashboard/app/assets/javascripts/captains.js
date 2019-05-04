@@ -39,9 +39,10 @@ $(document).ready(function() {
   function showShip(captain) {
     $(`#show_captid-${captain.id}`).append(`<ul id="capt-${captain.id}-ship-list"></ul>`);
     $(`#capt-${captain.id}-ship-list`).empty();
-    $.get(`/ships.json`, (data) => {
-      data.forEach(makeShipLink);
-    });
+    //$.get(`/ships.json`, (data) => {
+    //  data.forEach(makeShipLink);
+    //});
+    captain.ships.forEach(makeShipLink);
   }
 
   function makeShipLink(ship) {
