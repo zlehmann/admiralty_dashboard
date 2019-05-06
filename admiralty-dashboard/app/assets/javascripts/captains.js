@@ -14,25 +14,28 @@ $(document).ready(function() {
   $('#new_captain').on('submit', function(e) {
     e.preventDefault();
     let values = $(this).serialize();
-            let posting = $.post('/captains', values);
+    let posting = $.post('/captains', values);
 
-            posting.done(function(data){
-                console.log(data);
-                var capt = data;
-                $('#captName').text(capt["name"]);
-                $('#captAge').text(capt["age"]);
-                $('#captShip').text(capt["ship"]);
-            });
+    posting.done(function(data){
+        console.log(data);
+        var capt = new Captain(data);
+        const htmlToAdd = capt.formatShow();
+        $('#postResult').html(htmlToAdd);
+    });
   });
 
-  function Captain(id, name, ships){
-    this.id = id;
-    this.name = name;
-    this.ships = ships;
+  function Captain(captain){
+    this.id = captain.id;
+    this.name = captain.name;
+    this.ships = captain.ships;
   }
 
-  Captain.prototype.ships = function() {
-    
+  Captain.prototype.formatShow = function() {
+    let captainHtml = `
+      <h3>${this.name}</h3>
+      <p>Has been enlisted in his majesty's navy!<p>`
+
+    return captainHtml;
   }
 
   function makeCaptLink(captain) {
