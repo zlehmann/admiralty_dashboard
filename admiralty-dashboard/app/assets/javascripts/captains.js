@@ -11,6 +11,20 @@ $(document).ready(function() {
     });
   }
 
+  $('#new_captain').on('submit', function(e) {
+    e.preventDefault();
+    let values = $(this).serialize();
+            let posting = $.post('/captains', values);
+
+            posting.done(function(data){
+                console.log(data);
+                var capt = data;
+                $('#captName').text(capt["name"]);
+                $('#captAge').text(capt["age"]);
+                $('#captShip').text(capt["ship"]);
+            });
+  });
+
   function Captain(id, name, ships){
     this.id = id;
     this.name = name;
