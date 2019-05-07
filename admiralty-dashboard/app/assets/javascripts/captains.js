@@ -11,32 +11,30 @@ $(document).ready(function() {
     });
   }
 
-  $('#new_captain').on('submit', function(e) {
-    e.preventDefault();
-    let values = $(this).serialize();
-    let posting = $.post('/captains', values);
-
-    posting.done(function(data){
-        console.log(data);
-        var capt = new Captain(data);
-        const htmlToAdd = capt.formatShow();
-        $('#postResult').html(htmlToAdd);
-    });
-  });
-
   function Captain(captain){
     this.id = captain.id;
     this.name = captain.name;
-    this.ships = captain.ships;
+    this.age = captain.age;
   }
 
   Captain.prototype.formatShow = function() {
-    let captainHtml = `
+    const captainHtml = `
       <h3>${this.name}</h3>
       <p>Has been enlisted in his majesty's navy!<p>`
 
     return captainHtml;
   }
+
+  $("#new_captain").submit(function(e) {
+    debugger
+    e.preventDefault();
+    var values = $(this).serialize();
+    $.post("/captains", values).done(function(data) {
+      var newCapt = new Captain(data);
+      var htmlToAdd = newCapt.formatShow();
+      $('#postResult').html(htmlToAdd);
+    }); 
+  });
 
   function makeCaptLink(captain) {
     $('#captain_index').append(`<li id="captid-${captain.id}"><a href="/captains/${captain.id}">${captain.name}</a><button id="infobutton-${captain.id}">More Info</button></li>`);
