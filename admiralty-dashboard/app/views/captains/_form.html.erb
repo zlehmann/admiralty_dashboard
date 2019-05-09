@@ -6,3 +6,29 @@
     <%= f.submit "Create Captain", id: "btn_new_captain" %>
 <% end %>
 
+<script>
+    $("#new_captain").submit(function(e) {
+        e.preventDefault();
+        console.log("hit it")
+        var values = $(this).serialize();
+        $.post("/captains", values).done(function(data) {
+        var newCapt = new Captain(data);
+        var htmlToAdd = newCapt.formatShow();
+        $('#postResult').html(htmlToAdd);
+        }); 
+    });
+
+    function Captain(captain){
+        this.id = captain.id;
+        this.name = captain.name;
+        this.age = captain.age;
+      }
+    
+    Captain.prototype.formatShow = function() {
+    const captainHtml = `
+        <h3>${this.name}</h3>
+        <p>Has been enlisted in his majesty's navy!<p>`
+
+    return captainHtml;
+    }
+</script>

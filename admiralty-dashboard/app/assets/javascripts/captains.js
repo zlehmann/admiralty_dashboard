@@ -4,17 +4,6 @@ $(document).ready(function() {
     captainIndex();
   })
 
-  $("input#btn_new_captain").submit(function(e) {
-    e.preventDefault();
-    console.log("hit it")
-    var values = $(this).serialize();
-    $.post("/captains", values).done(function(data) {
-    var newCapt = new Captain(data);
-    var htmlToAdd = newCapt.formatShow();
-    $('#postResult').html(htmlToAdd);
-    }); 
-  });
-
   function captainIndex() {
     $('#captain_index').empty();
     $.get(`/captains.json`, (data) => {
