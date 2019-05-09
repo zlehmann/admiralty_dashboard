@@ -1,5 +1,5 @@
-$(document).ready(function() {
-  $("button#btn_captains").on('click', (e) => {
+document.addEventListener("turbolinks:load", function() {
+  $(".btn_captains").on('click', (e) => {
     e.preventDefault();
     captainIndex();
   })
