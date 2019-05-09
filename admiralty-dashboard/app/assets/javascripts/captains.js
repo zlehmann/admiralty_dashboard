@@ -1,8 +1,19 @@
 $(document).ready(function() {
   $("button#btn_captains").on('click', (e) => {
-    e.preventDefault;
+    e.preventDefault();
     captainIndex();
   })
+
+  $("#new_captain").submit(function(e) {
+    e.preventDefault();
+    console.log("hit it")
+    var values = $(this).serialize();
+    $.post("/captains", values).done(function(data) {
+      var newCapt = new Captain(data);
+      var htmlToAdd = newCapt.formatShow();
+      $('#postResult').html(htmlToAdd);
+    }); 
+  });
 
   function captainIndex() {
     $('#captain_index').empty();
@@ -24,17 +35,6 @@ $(document).ready(function() {
 
     return captainHtml;
   }
-
-  $("#new_captain").submit(function(e) {
-    debugger
-    e.preventDefault();
-    var values = $(this).serialize();
-    $.post("/captains", values).done(function(data) {
-      var newCapt = new Captain(data);
-      var htmlToAdd = newCapt.formatShow();
-      $('#postResult').html(htmlToAdd);
-    }); 
-  });
 
   function makeCaptLink(captain) {
     $('#captain_index').append(`<li id="captid-${captain.id}"><a href="/captains/${captain.id}">${captain.name}</a><button id="infobutton-${captain.id}">More Info</button></li>`);
