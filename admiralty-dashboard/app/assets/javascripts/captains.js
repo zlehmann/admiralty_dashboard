@@ -11,6 +11,31 @@ document.addEventListener("turbolinks:load", function() {
     });
   }
 
+  $(".btn_a_capts").on('click', (e) => {
+    e.preventDefault();
+    sortedCapt();
+  })
+
+  function sortedCapt() {
+    $('#captain_index').empty();
+    $.get('/captains.json', (data) => {
+      data.sort(function(a, b) {
+        var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+        var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+
+        // names must be equal
+        return 0;
+      })
+      data.forEach(makeCaptLink);
+    });
+  }
+
   function Captain(captain){
     this.id = captain.id;
     this.name = captain.name;
